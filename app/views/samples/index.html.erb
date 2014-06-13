@@ -1,0 +1,55 @@
+<% @samples.each do |sample| %>
+     <div class="sample">
+          <div class="sample-name">
+               <%= sample.name %>
+          </div>
+          <div class="hit">
+          </div>
+          <audio class="go" src="<%= sample.src %>"></audio> 
+     </div>
+<% end %>
+
+
+
+<script type="text/javascript">
+
+$(function(){
+
+     $('.sample').click(function() {
+          $(this).children('.go')[0].play();
+     });
+
+     $(document).on( "keydown", function( event ) {
+          if(event.which == 90) {
+               $('.go')[0].play(); 
+               $( ".hit" ).eq(0).animate({
+                    opacity: .7
+               }, 100, function() {
+                    $( ".hit" ).eq(0).animate({
+                         opacity: 0
+                    }, 100);
+               });
+          }
+     });
+
+     $(document).on( "keydown", function( event ) {
+         if(event.which == 77) {
+               $('.go')[1].play(); 
+               $( ".hit" ).eq(1).animate({
+                    opacity: .7
+               }, 100, function() {
+                    $( ".hit" ).eq(1).animate({
+                         opacity: 0
+                    }, 100);
+               });
+         }
+     });
+
+
+
+
+
+
+});
+
+</script>
