@@ -1,13 +1,16 @@
-<% @samples.each do |sample| %>
-     <div class="sample">
-          <div class="sample-name">
-               <%= sample.name %>
+<div class="sample-container">
+     <% @samples.each do |sample| %>
+          <div class="sample">
+               <div class="sample-name">
+                    <%= sample.name %>
+               </div>
+               <div class="hit">
+               </div>
+               <audio class="go" src="<%= sample.src %>"></audio> 
           </div>
-          <div class="hit">
-          </div>
-          <audio class="go" src="<%= sample.src %>"></audio> 
-     </div>
-<% end %>
+     <% end %>
+</div>
+
 
 
 
@@ -17,6 +20,13 @@ $(function(){
 
      $('.sample').click(function() {
           $(this).children('.go')[0].play();
+          $(this).children('.hit').animate({
+                    opacity: .7
+               }, 100, function() {
+                    $('.hit').animate({
+                         opacity: 0
+                    }, 100);
+               });
      });
 
      $(document).on( "keydown", function( event ) {
@@ -39,6 +49,58 @@ $(function(){
                     opacity: .7
                }, 100, function() {
                     $( ".hit" ).eq(1).animate({
+                         opacity: 0
+                    }, 100);
+               });
+         }
+     });
+
+     $(document).on( "keydown", function( event ) {
+         if(event.which == 76) {
+               $('.go')[2].play(); 
+               $( ".hit" ).eq(2).animate({
+                    opacity: .7
+               }, 100, function() {
+                    $( ".hit" ).eq(2).animate({
+                         opacity: 0
+                    }, 100);
+               });
+         }
+     });
+
+     $(document).on( "keydown", function( event ) {
+         if(event.which == 78) {
+               $('.go')[3].play(); 
+               $( ".hit" ).eq(3).animate({
+                    opacity: .7
+               }, 100, function() {
+                    $( ".hit" ).eq(3).animate({
+                         opacity: 0
+                    }, 100);
+               });
+         }
+     });
+
+     $(document).on( "keydown", function( event ) {
+         if(event.which == 75) {
+               $('.go')[4].play(); 
+               $( ".hit" ).eq(4).animate({
+                    opacity: .7
+               }, 100, function() {
+                    $( ".hit" ).eq(4).animate({
+                         opacity: 0
+                    }, 100);
+               });
+         }
+     });
+
+     $(document).on( "keydown", function( event ) {
+         if(event.which == 13) {
+               $('.go')[7].play(); 
+               $( ".hit" ).eq(7).animate({
+                    opacity: .7
+               }, 100, function() {
+                    $( ".hit" ).eq(7).animate({
                          opacity: 0
                     }, 100);
                });
